@@ -1,3 +1,5 @@
+# i use this for creating and deleting a folder and subfolder
+
 import os
 import shutil
 
