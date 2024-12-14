@@ -3,7 +3,7 @@ from openpyxl.styles import Font, Alignment, Border, Side, PatternFill
 import os
 
 # Define the specific path
-folder_path = r"C:\Users\JB VILLE\OneDrive\Desktop\fafa\PY\EXCEL\excel file"  # Update this path
+folder_path = r"PY\EXCEL"  # Update this path
 file_name = "recreated_class_schedule2.xlsx"
 file_path = os.path.join(folder_path, file_name)
 
