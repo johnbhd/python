@@ -25,4 +25,4 @@ This repository contains all the Python projects and exercises I have worked on 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/johnbhd/python-compilation-project.git
+   git clone https://github.com/johnbhd/python.git
