@@ -56,17 +56,26 @@ def FCFS():
             break
         except ValueError:
             print("Invalid Input, try again.\n")
-        
+  
+def  SJF():
+     print("\nShortest Job First")
+     
+def  SRTF():
+     print("\nShortest Remaining Time First")
+     
+def  RR():
+     print("\nRound Robin")
+                       
 def Choices(choice):
     match choice:
         case 1: 
             FCFS()
         case 2: 
-            print("SJF")
+            SJF()
         case 3: 
-            print("SRTF")
+            SRTF()
         case 4: 
-            print("RR")      
+            RR()     
                
 def Main():
     print("Welcome to CPU Scheduling (OS)")
