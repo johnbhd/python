@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Python Hello world</title>
+  <script src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js"></script>
+</head>
+<body onload="brython()">
+  <h2 id="result"></h2>
+</body>
+<script type="text/python">
+from browser import document
+
+x = "World"
+name = "JB"
+
+document["result"].text = f"Hello {x}, Im {name}"
+</script>
+</html>
