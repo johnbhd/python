@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Python Sum of 2 Number</title>
+  <script src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js"></script>
+</head>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: lightblue;
+    padding: 20px;
+    border-radius: 20px;
+  }
+</style>
+<body onload="brython()">
+  <div class="container">
+      <h2 id="title"></h2>
+      <input type="number" id="num1" placeholder="Enter First Number">
+      <input type="number" id="num2" placeholder="Enter Second Number">
+      <button id="btn">Calculate</button>
+  </div>
+
+</body>
+<script type="text/python">
+from browser import document
+
+def sum2Num(event): 
+  num1 = int(document["num1"].value)
+  num2 = int(document["num2"].value)
+  
+  sum = num1 + num2
+  
+  document["title"].text = f"Sum of 2 Number is {sum}."
+
+document["title"].text = "Sum of 2 Number"
+document["btn"].bind("click", sum2Num)
+</script>
+</html>
