@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Python darkmode</title>
+  <script src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js"></script>
+</head>
+<style>
+    body {
+        background-color: whitesmoke;
+        color: black;
+    }
+    body.dark {
+        background-color: black;
+        color: white;
+    }
+</style>
+<body onload="brython()">
+  <h2 id="result"></h2>
+  <button id="btn">Click me!</button>
+</body>
+<script type="text/python">
+from browser import document
+
+def darkMode(event):
+    document.body.classList.toggle("dark")
+    mode = "Dark Mode"
+
+    if document.body.classList.contains("dark"):
+        mode = "Dark Mode"
+    else:
+        mode = "Light Mode"
+
+    document["result"].text = mode
+
+document["result"].text = f"Light Mode"
+
+document["btn"].bind("click", darkMode)
+
+
+
+</script>
+</html>

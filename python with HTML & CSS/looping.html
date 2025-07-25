@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Python Looping</title>
+  <script src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js"></script>
+</head>
+<style>
+    h2 {
+        color: blue;
+    }
+</style>
+<body onload="brython()">
+  <h2 id="result"></h2>
+  <input type="text" id="word"  placeholder="Loop word">
+  <button id="btn">Enter</button>
+</body>
+<script type="text/python">
+from browser import document
+
+def loopWord(event):
+    word = document["word"].value
+    output = ""
+
+    for i in range(10):
+        output += word + " "
+    
+    document["result"].text = output
+
+
+document["result"].text = f"Looping"
+
+document["btn"].bind("click", loopWord)
+
+</script>
+</html>

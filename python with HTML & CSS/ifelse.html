@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Python if else</title>
+  <script src="https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js"></script>
+</head>
+<body onload="brython()">
+  <h2 id="result"></h2>
+  <input type="number" id="grade"  placeholder="Enter grade">
+  <button id="btn">Enter</button>
+</body>
+<script type="text/python">
+from browser import document
+
+def grade(event):
+    grade = int(document["grade"].value)
+
+    if grade >= 90:
+        document["result"].text = f"Good job"
+        print("Good Job")
+    elif grade >= 80: 
+        document["result"].text = f"Nce one"
+        print("Nce one")
+
+    else:
+        document["result"].text = f"Never give up"
+        print("Never give up")
+
+
+document["result"].text = f"Student Score"
+
+document["btn"].bind("click", grade)
+
+
+
+</script>
+</html>
