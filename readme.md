@@ -1,4 +1,5 @@
 # Python Compilation Project
+- Goal is to learn basic Machine Learing
 
 This repository contains all the Python projects and exercises I have worked on during my learning journey.
 
