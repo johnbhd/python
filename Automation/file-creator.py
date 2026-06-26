@@ -38,13 +38,13 @@ for i in range(len(fname)):
         spath = os.path.join(fpath, f"{sname[j]}")
         os.makedirs(spath, exist_ok=True)
 if condition:
-    print("Na create na JB")
+    print("CREATED")
 else: 
     for root, dirs, files in os.walk(basePath, topdown=False):
         for name in dirs: 
             dir_path = os.path.join(root, name)
             shutil.rmtree(dir_path)
-    print("Na delete na JB")
+    print("DELETED")
 
 
 
