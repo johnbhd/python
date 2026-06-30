@@ -22,18 +22,61 @@ class WorkoutPlan:
         else:
             for exercise in self.exercises:
                 print(f"- {exercise}")
+                
+    def to_dict(self):
+            return {
+                "day": self.day,
+                "workout_name": self.workout_name,
+                "exercises": self.exercises,
+                "completed": self.completed
+            }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            data["day"],
+            data["workout_name"],
+            data["exercises"],
+            data["completed"]
+        )
 
 
 class WorkoutTracker:
     def __init__(self, file_name="workout_plans.json"):
         self.file_name = file_name
         self.workouts = []
+        
+    def save_workouts(self):
+        data = []
+    
+        for workout in self.workouts:
+            data.append({
+                "day": workout.day,
+                "workout_name": workout.workout_name,
+                "exercises": workout.exercises,
+                "completed": workout.completed
+            })
+    
+        with open(self.file_name, "w") as file:
+            json.dump(data, file, indent=4)
+         
+    def load_workouts(self):
+        with open(self.file_name, "r") as file:
+            data = json.load(file)
+
+        self.workouts = []
+
+        for item in data:
+            workout = WorkoutPlan.from_dict(item)
+            self.workouts.append(workout)
 
     def show_menu(self):
         print("\nWorkout Plan Tracker")
         print("1. View workouts")
         print("2. Add workout")
-        print("3. Exit")
+        print("3. Edit workout")
+        print("4. Delete workout")
+        print("5. Exit")
 
     def add_workout(self):
         day = input("Enter workout day: ")
@@ -51,9 +94,60 @@ class WorkoutTracker:
 
         workout = WorkoutPlan(day, workout_name, exercises)
         self.workouts.append(workout)
+        
+        self.save_workouts()
 
         print("Workout added successfully.")
-
+        
+    def edit_workout(self):
+        if not self.workouts:
+            print("No workouts to edit.")
+            return
+    
+        self.view_workouts()
+    
+        try:
+            number = int(input("Enter workout number to edit: "))
+    
+            if number < 1 or number > len(self.workouts):
+                print("Invalid workout number.")
+                return
+    
+            workout = self.workouts[number - 1]
+    
+            print("\nLeave blank if you do not want to change it.")
+    
+            new_day = input(f"New day ({workout.day}): ")
+            new_workout_name = input(f"New workout name ({workout.workout_name}): ")
+    
+            if new_day != "":
+                workout.day = new_day
+    
+            if new_workout_name != "":
+                workout.workout_name = new_workout_name
+    
+            change_exercises = input("Do you want to replace exercises? yes/no: ")
+    
+            if change_exercises.lower() == "yes":
+                new_exercises = []
+    
+                while True:
+                    exercise = input("Enter new exercise or type done: ")
+    
+                    if exercise.lower() == "done":
+                        break
+    
+                    new_exercises.append(exercise)
+    
+                workout.exercises = new_exercises
+    
+            self.save_workouts()
+    
+            print("Workout updated successfully.")
+    
+        except ValueError:
+            print("Please enter a valid number.")
+    
     def view_workouts(self):
         if not self.workouts:
             print("No workouts yet.")
@@ -63,26 +157,56 @@ class WorkoutTracker:
             print(f"\nWorkout #{index}")
             workout.show_info()
 
+    def delete_workout(self):
+        if not self.workouts:
+            print("No workouts to delete.")
+            return
+    
+        self.view_workouts()
+    
+        try:
+            number = int(input("Enter workout number to delete: "))
+    
+            if number < 1 or number > len(self.workouts):
+                print("Invalid workout number.")
+                return
+    
+            deleted_workout = self.workouts.pop(number - 1)
+    
+            self.save_workouts()
+    
+            print(f"Deleted workout: {deleted_workout.workout_name}")
+    
+        except ValueError:
+            print("Please enter a valid number.")
+            
     def run(self):
+        self.load_workouts()
+    
         while True:
             self.show_menu()
-
+    
             choice = input("Choose option: ")
-
+    
             if choice == "1":
                 self.view_workouts()
-
+    
             elif choice == "2":
                 self.add_workout()
-
+    
             elif choice == "3":
+                self.edit_workout()
+    
+            elif choice == "4":
+                self.delete_workout()
+    
+            elif choice == "5":
                 print("Exit...")
                 break
-
+    
             else:
                 print("Invalid choice...")
-
-
+        
 def initialize_project():
     file_name = "workout_plans.json"
 
