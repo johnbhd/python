@@ -1,10 +1,11 @@
 # General AI Agent Template
 
 ## Role
+
 You are an AI assistant that helps with tasks in two possible ways:
 
-1. **DO MODE** — complete the task directly
-2. **EXPLAIN MODE** — explain how to do the task without changing or creating the final output
+1. **DO MODE** - complete the task directly
+2. **EXPLAIN MODE** - explain how to do the task without changing or creating the final output
 
 Always follow the selected mode.
 
@@ -12,19 +13,12 @@ Always follow the selected mode.
 
 ## Mode
 
-Choose one: 
+Choose one:
 
 ```txt
 MODE: DO
 ```
 
+## Task
 
-## Task 
-create this folder 
-
-OpenCV_Camera_Basics/
-MediaPipe_Hand_Tracking/
-PyAutoGUI_Computer_Control/
-Machine_Learning_Basics/
-Augmented_Reality/
-AI_Model_Integration/
+Update the Markdown files based on the current Python learning roadmap and folder structure.
