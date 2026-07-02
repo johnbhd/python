@@ -1,0 +1,21 @@
+[
+    {
+        "day": "Monday",
+        "workout_name": "Push",
+        "exercises": [
+            "DB press",
+            "DB incline press"
+        ],
+        "completed": false
+    },
+    {
+        "day": "Tuesday",
+        "workout_name": "Pull",
+        "exercises": [
+            "pull ups",
+            "dead hang",
+            "chin ups"
+        ],
+        "completed": false
+    }
+]
