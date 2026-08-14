@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+workflows/
+# Captured slides are generated locally.
+screenshots/*.png
