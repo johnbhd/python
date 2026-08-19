@@ -1,0 +1,6 @@
+opencv-python
+# MediaPipe 0.10.31+ removed the legacy `mp.solutions` pose API this project uses.
+mediapipe==0.10.21
+numpy<2
+sounddevice
+soundfile
